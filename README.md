@@ -5,7 +5,7 @@ The goal of the algorithm is to determine whether a given function `f(x)` is con
 To do this:
 1. I used 3 input qubits (q[0], q[1], q[2]) and 1 ancilla qubit (q[3]).
 2. An ancillary qubit is an extra helping qubit. It holds intermediate results during calculation and stores temporary or hidden information. The ancilla starts in state |1⟩ and is superimposed using a Hadamard gate so that the oracle can create a phase difference.
-3. Hadamard gates on input qubits create a superposition, testing all possible inputs at once.
+3. Hadamard gates on input qubits create a superposition, testing all possible inputs at once which is a qunatum speedup.
 4. Next, I apply the oracle for my function f(x₀, x₁, x₂) = x₀ ⊕ x₁ ⊕ x₂. The oracle flips the ancilla qubit conditionally, effectively adding a phase (-1)^{f(x)} to each input state.
 5. The oracle section represents the black-box function f(x), which can be either constant or balanced.
 6. The final Hadamard and measurement steps reveal the nature of f(x):
@@ -29,16 +29,15 @@ qreg q[4];
 
 creg c[3];
 
-h q[2];
+h q[3];
 
 h q[0];
 
-h q[3];
-
 h q[1];
 
-cx q[0], q[3];
+h q[2];
 
+cx q[0], q[3];
 
 cx q[1], q[3];
 
