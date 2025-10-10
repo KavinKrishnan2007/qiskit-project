@@ -22,25 +22,42 @@ To do this:
 5. Paste the following code into the editor:
 6.
 OPENQASM 2.0;
+
 include "qelib1.inc";
+
 qreg q[4];
+
 creg c[3];
+
 h q[2];
+
 h q[0];
+
 h q[3];
+
 h q[1];
+
 cx q[0], q[3];
+
+
 cx q[1], q[3];
+
 cx q[2], q[3];
+
 h q[0];
+
 h q[1];
+
 h q[2];
+
 measure q[0] -> c[0];
+
 measure q[1] -> c[1];
+
 measure q[2] -> c[2];
 
-7. Click “Run” on the top bar and select Simulator as backend.
-8. Wait for execution results.
+8. Click “Run” on the top bar and select Simulator as backend.
+9. Wait for execution results.
 - If the output (counts) show only 000, the oracle is constant.
 - If the output shows any pattern other than 000, the oracle is balanced.
 9. The picture of the quantum circuit is added in the section I PDF file. 
